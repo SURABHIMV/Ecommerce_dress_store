@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5" type="text/css" media="all">
+
+    <style>
+       .gradient-custom {
+        /* fallback for old browsers */
+        background: #9a93fb;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+        }
+
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+        }
+        .card-registration .select-arrow {
+        top: 13px;
+        } /* Your CSS styles */
+    </style>
+</head>
+
+<body>
+    <h1>admin page</h1>
+    <br>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Product details entry</h3>
+                                <form>
+                                        <div class="row">
+                                          <div class="col-md-6 mb-4">
+                                            <div data-mdb-input-init class="form-outline">
+                                                <input type="text" id="productname" name="productname" class="form-control form-control-lg" />
+                                                <label class="form-label" for="product name">Product name</label>
+                                            </div>
+
+                                            <div data-mdb-input-init class="form-outline">
+                                                <input type="file" accept="image/*" id="productimage" name="productimage" class="form-control form-control-lg" />
+                                                <label class="form-label" for="product image"></label>
+                                            </div>
+                                            <div data-mdb-input-init class="form-outline">
+                                                <input type="text" id="productprice" name="productprice" class="form-control form-control-lg" />
+                                                <label class="form-label" for="product price">Product price</label>
+                                            </div>
+                                            <div data-mdb-input-init class="form-outline">
+                                                <input type="text" id="productcategory" name="productcategory" class="form-control form-control-lg" />
+                                                <label class="form-label" for="product_category">Product category</label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="mt-4 pt-2">
+                                            <button type="submit" name="action" value="add_shopkeeper" class="btn btn-primary btn-lg">Submit</button>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</body>
+</html>

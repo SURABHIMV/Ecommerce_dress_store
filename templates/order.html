@@ -1,0 +1,76 @@
+{% include 'base.html' %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+        
+    .buy-now-button {
+        display: inline-block;
+        padding: 10px 20px; /* Adjust padding for button size */
+        background-color: #007bff; /* Button background color */
+        color: #fff; /* Button text color */
+        text-decoration: none; /* Remove default underline */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Apply border radius for rounded corners */
+        cursor: pointer; /* Show pointer cursor on hover */
+    }
+
+    /* Hover effect */
+    .buy-now-button:hover {
+        background-color: #f1f4f8; /* Darker color on hover */
+    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ebdbe5;
+            margin: 0;
+            padding: 0;
+        }
+</style>
+<style>
+    
+    table, th, td {
+    border:1px solid black;
+    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #0c0303;
+    text-align: center; /* Center-align text horizontally */
+    padding: 8px;
+  }
+  
+  /* Style to center the content vertically */
+  td p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure the <p> element takes full height of its parent <td> */
+  }
+
+</style>
+<body>
+<br>
+<h3>Ordered items</h3>
+<br>
+<table style="width:100%">
+
+  <tr>
+    <th>Image</th>
+    <th>Quantiy</th>
+    <th>Price</th>
+  </tr>
+  {% for item in order_items %}
+    <tr>
+        <td><img src="{{ item.product.image.url }}" alt="{{ item.name }}"></td>
+        <td><p>{{ item.quantity}}</p></td>
+        <td><p>${{ item.total_price}}</p></td>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+

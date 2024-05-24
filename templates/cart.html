@@ -1,0 +1,181 @@
+<!-- cart/cart.html -->
+{% include 'base.html' %}
+{% block content %}
+    <style>
+        .button-container {
+            text-align: center; /* Center-align the button */
+        }
+
+        .blue-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .blue-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style>
+		body {
+            font-family: Arial, sans-serif;
+            background-color: #ebdbe5;
+            margin: 0;
+            padding: 0;
+        }
+        /* Add CSS styles for flex container and items */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between; /* Space items evenly along the main axis */
+            list-style: none; /* Remove list styles */
+            padding: 0;
+        }
+
+        .product-item {
+            flex: 1; /* Grow to fill available space evenly */
+            margin: 10px; /* Add spacing between items */
+            border: 1px solid #ccc; /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style the "Buy Now" button */
+        .buy-now-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3d0e7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container1 {
+            width: 100%;
+            margin-top: 50px; /* Apply margin only to the top */
+            margin-bottom: 50px; /* Apply margin only to the bottom */
+            margin-left: auto; /* Apply margin only to the left */
+            margin-right: auto; /* Apply margin only to the right */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+        }
+
+    
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .product1 {
+            background-color: #faf6fa;
+            box-shadow: 0 4px 8px rgba(15, 15, 15, 0.1);
+            margin-bottom: 20px; /* Apply margin below each product */
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .product {
+                width: 100%;
+            }
+			.container {
+		/* Center the container horizontally and vertically */
+		display: flex;
+		justify-content: center; /* Horizontally center the content */
+		align-items: center; /* Vertically center the content */
+		height: 200px; /* Set a height for the container */
+		border: 1px solid #ccc; /* Optional: Add a border for visualization */
+	}
+        }
+    </style>
+		<div class="container">
+			<h2>Cart added items</h2>
+		</div>
+		<div class="container" >
+			{% for item in cart_items %}
+			<div class="product">
+				<img src="{{ item.product.image.url }}" alt="{{ item.name }}">
+				<p>{{ item.product.product }}</p>
+				<!-- <p>Quantity: {{ item.quantity }}</p>
+				<p>Price: ${{ item.product.price }}</p> -->
+
+				<!-- Input fields for quantity and price -->
+				<input type="hidden" id="productId{{ item.id }}" value="{{ item.id }}">
+
+				<!-- <label for="quantity{{ item.id }}">Quantity:</label>
+				<input type="number" id="quantity{{ item.id }}" name="quantity" value="{{ item.quantity }}" min="1" max="100"> -->
+				<p>quantity: {{ item.quantity}}</p>
+				<!-- <p>Actual Price: ${{ item.product.price}}</p> -->
+				<p>total price: ${{ item.total_price}}</p>
+
+				<a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+			</div>
+			{% empty %}
+			<p>Your cart is empty.</p>
+			{% endfor %}
+		</div>
+    <div class="container1" >
+      <div class="product1">
+      <h3>Total Price: ${{ total_price }}</h3>
+      <div class="button-container">
+        <a href="{% url 'view_payment' %}" class="blue-button">Place Order</a>
+      </div>
+    </div>
+      </div>
+    </div>
+	<br><br>
+	
+    <!-- <button type="submit">Place Order</button> -->
+    
+	{% endblock %}

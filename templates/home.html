@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .new_body {
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Set height of the body to full viewport height */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+
+            background-color: #ebdbe5; /* Optional: Set a background color */
+        }
+        .text-box{
+            margin-top: 80px;
+            max-width: 700px;
+            text-align: left;
+        }
+        .text-box h1{
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #8d0851;
+        }
+        .user-box {
+            position: absolute;
+            top: 260px; /* Adjust this value to move it down from the top */
+            right: 9%;
+            z-index: 100;
+            width: 350px; /* Set the width of the container */
+            height: 150px;
+
+        }
+
+        .user-box img {
+            display: block;
+            width: 400px;
+            height: 330px; /* Adjust height as needed */
+            border-radius: 100%; /* Make the image circular */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            }
+
+    </style>
+        <div class="btn-group new_body">
+            <div class="text-box">
+                <br>
+                <h1>Great Discounts on latest collections !!!</h1>
+            </div>
+        </div>
+
+        <div class="user-box">
+            <img src="../media/product_image/download.jpeg" alt="Logo">
+        </div>
+    </form>
+{% endblock %}

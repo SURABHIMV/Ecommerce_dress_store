@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Tutorials</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 10%; /* Adjust top and bottom padding for the header */
+            background-color: #5f0564;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 100px; /* Adjust maximum width of the logo */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="../media/product_image/logo.jpeg" alt="Logo">
+            </div>
+            <!-- Navigation Links -->
+            <nav>
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                    <ul style="margin-bottom:0px;">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Women
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'add_page1' %}">Women shirt</a></a></li>
+                    <li><a class="dropdown-item" href="{% url 'add_page2' %}">Women skert</a></li>
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Men
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'add_page3' %}">Men shirt</a></a></li>
+                    <li><a class="dropdown-item" href="{% url 'add_page4' %}">Men trouser</a></a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <ul style="margin-bottom:0px;">
+                        <li><a href="{% url 'order' %}">Order</a></li>
+                    </ul>
+                </div>
+        
+                <div class="btn-group">
+                    <ul style="margin-bottom:0px;">
+                        <li style="margin-right:0px;"><a href="{% url 'view_cart' %}">&#x1F6D2; Cart</a></li> 
+                    </ul>
+                </div>
+
+                <div class="btn-group">
+                    <ul style="margin-bottom:0px;">
+                        <li><a href="{% url 'view_wishlist' %}">&#x2764;&#xfe0f; wishlist</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <ul style="margin-bottom:0px;">
+                        <li><a href="{% url 'logout' %}">&#x27A5;logout</a></li>
+                    </ul>
+                </div>
+
+            </nav>
+                <!-- <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'add_page1' %}">Women shirt</a></li>
+                    <li><a href="{% url 'add_page2' %}">Women skert</a></li>
+                    <li><a href="{% url 'add_page3' %}">Men shirt</a></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                    <li><a href="{% url 'view_cart' %}" style="color: #fdfdfc; font-weight: bold;">&#x1F6D2; Cart</a></li>
+                    <li><a href="{% url 'view_wishlist' %}" style="color: #fdfdfc; font-weight: bold;">&#x2764;&#xfe0f; wishlist</a></li>
+                </ul> -->
+        </div>
+        {% block content %}
+        {% endblock %}    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

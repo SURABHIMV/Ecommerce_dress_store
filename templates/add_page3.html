@@ -1,0 +1,100 @@
+{% include 'base.html' %}
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <style>
+        
+        .buy-now-button {
+            display: inline-block;
+            padding: 10px 20px; /* Adjust padding for button size */
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            text-decoration: none; /* Remove default underline */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Apply border radius for rounded corners */
+            cursor: pointer; /* Show pointer cursor on hover */
+        }
+
+        /* Hover effect */
+        .buy-now-button:hover {
+            background-color: #f1f4f8; /* Darker color on hover */
+        }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #ebdbe5;
+                margin: 0;
+                padding: 0;
+            }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .product {
+                width: 100%;
+            }
+        }
+    </style>
+    <br>
+    <div class="container">
+        {% for m in m_shirt %}
+          <form method="post" action="{% url 'add_to_cart' m.id%}">
+          {% csrf_token %}
+            <div class="product">
+                <img src="{{ m.image.url }}" alt="{{ m.name }}">
+                <h3>{{ m.product }}</h3>
+                <p>$ {{ m.price }}</p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <!-- <button>Add to Cart</button> -->
+                <!--  -->
+                <!-- <a href="#" class="buy-now-button">Buy Now</a> -->
+                <a href="{% url 'add_wishlist' m.id %}">
+                    <i class="fas fa-heart" style="color: red;"></i></a>
+                
+                <br>
+                <button type="submit" class="buy-now-button">Add to Cart</button>
+            </div>
+          </form>
+        {% endfor %}
+    </div>
+{% endblock %}
+
